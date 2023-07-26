@@ -6,10 +6,14 @@ class CreateUsers < ActiveRecord::Migration[6.1]
       t.string :username
       t.string :email
       t.string :password
-      t.integer :age 
-      t.string :gender 
-      t.string :seeking_gender 
-      t.timestamp :created_at
+      t.integer :age  
+      t.string :gender  
+      t.string :seeking_gender  
+      t.timestamps
     end
+
+    add_index :users, :username, unique: true
   end
 end
+
+

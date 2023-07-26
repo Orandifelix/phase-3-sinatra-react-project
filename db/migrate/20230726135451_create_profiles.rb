@@ -22,8 +22,8 @@ class CreateProfiles < ActiveRecord::Migration[6.1]
       t.text :passion
       t.string :account_status
       t.integer :user_id
-      t.timestamp :created_at
+      t.string :avatar_url  
+      t.timestamps
     end
   end
 end
-

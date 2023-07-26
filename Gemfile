@@ -43,6 +43,11 @@ group :development do
   gem "rerun"
 end
 
+
+
+gem 'activerecord-import'
+
+
 # These gems will only be used when we are running tests
 group :test do
   gem "database_cleaner", "~> 2.0"
@@ -50,3 +55,5 @@ group :test do
   gem "rspec", "~> 3.10"
   gem "rspec-json_expectations", "~> 2.2"
 end
+
+gem 'faker'

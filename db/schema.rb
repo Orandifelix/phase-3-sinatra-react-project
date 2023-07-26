@@ -10,19 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_07_25_161650) do
+ActiveRecord::Schema.define(version: 2023_07_26_135456) do
 
   create_table "favorites", force: :cascade do |t|
-    t.integer "favorited_by"
-    t.integer "you_favorited"
+    t.integer "profile_id"
+    t.integer "user_id"
+    t.integer "age"
+    t.string "location"
+    t.string "username"
+    t.string "avatar_url"
     t.datetime "created_at"
   end
 
   create_table "inboxs", force: :cascade do |t|
-    t.integer "sender_id"
-    t.integer "receiver_id"
+    t.integer "user_id"
+    t.string "avatar_url"
     t.integer "no_of_unread_messages"
     t.datetime "created_at"
+    t.index ["user_id"], name: "index_inboxs_on_user_id", unique: true
   end
 
   create_table "messages", force: :cascade do |t|
@@ -33,6 +38,10 @@ ActiveRecord::Schema.define(version: 2023_07_25_161650) do
     t.datetime "created_at"
     t.string "read_status"
     t.datetime "read_at"
+    t.string "sender_username"
+    t.string "sender_avatar"
+    t.string "receiver_username"
+    t.string "receiver_avatar"
   end
 
   create_table "profiles", force: :cascade do |t|
@@ -57,7 +66,9 @@ ActiveRecord::Schema.define(version: 2023_07_25_161650) do
     t.text "passion"
     t.string "account_status"
     t.integer "user_id"
-    t.datetime "created_at"
+    t.string "avatar_url"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -69,7 +80,9 @@ ActiveRecord::Schema.define(version: 2023_07_25_161650) do
     t.integer "age"
     t.string "gender"
     t.string "seeking_gender"
-    t.datetime "created_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["username"], name: "index_users_on_username", unique: true
   end
 
 end

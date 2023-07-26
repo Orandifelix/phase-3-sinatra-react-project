@@ -8,6 +8,10 @@ class CreateMessages < ActiveRecord::Migration[6.1]
       t.timestamp :created_at
       t.string :read_status
       t.timestamp :read_at
+      t.string :sender_username
+      t.string :sender_avatar
+      t.string :receiver_username
+      t.string :receiver_avatar
     end
   end
 end
