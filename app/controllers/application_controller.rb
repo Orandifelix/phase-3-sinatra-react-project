@@ -25,7 +25,7 @@ class ApplicationController < Sinatra::Base
     }.to_json
   end
   
-
+#  the  user should info after signing up
   post '/users' do
     user_params = params[:user]
     user = User.new(user_params)
@@ -39,7 +39,18 @@ class ApplicationController < Sinatra::Base
     end
   end
 
+  # capturing  user  info to let  him  update  the profile
+  get '/users/last_updated' do
+  last_updated_user = User.order(updated_at: :desc).first
 
+  if last_updated_user
+    status 200
+    last_updated_user.to_json
+  else
+    status 404
+    { error: 'No users found' }.to_json
+  end
+end
 
     get '/profiles' do
     Profile.all.to_json
