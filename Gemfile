@@ -43,6 +43,7 @@ group :development do
   gem "rerun"
 end
 
+gem 'shotgun', group: :development
 
 
 gem 'activerecord-import'
