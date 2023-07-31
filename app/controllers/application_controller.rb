@@ -33,6 +33,18 @@ class ApplicationController < Sinatra::Base
       message: 'Favorite deleted'
     }.to_json
   end
+
+  # Adding favorites to the  favorites table 
+  post '/favorites' do 
+    favorite_params = params.require(:favorite).permit(:avatar_url, :username , :location, :age)
+    favorite = Favorite.create(favorite_params)
+    status 201
+    json({
+      status: "Success",
+      message: "Favorite created",
+      favorite: favorite
+    })
+  end
   
 #  the  user should info after signing up
   post '/users' do
